@@ -25,14 +25,11 @@ public class AutoShooter : MonoBehaviour
             _target = _enemies[0];
             _enemies.RemoveAt(0);
             RotateTowardsEnemy();
+            if (!CanFire()) return;
+            
+            Fire();
         }
-
-
-        if (!CanFire()) return;
-        
-        Fire();
         ResetFireTimer();
-        Debug.Log(_target.gameObject.name);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -41,6 +38,9 @@ public class AutoShooter : MonoBehaviour
         {
             _target = other.transform;
             RotateTowardsEnemy();
+            if (!CanFire()) return;
+            
+            Fire();
         }
         else if (other.CompareTag($"Enemy"))
         {
@@ -50,9 +50,7 @@ public class AutoShooter : MonoBehaviour
 
     private void RotateTowardsEnemy()
     {
-        var direction = (_target.position - transform.position).normalized;
-        var lookRotation = Quaternion.LookRotation(new Vector2(direction.x, 0f));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+        transform.localScale = _target.position.x < transform.position.x ? new Vector3(-1f, 1f, 1f) : new Vector3(1f, 1f, 1f);
     }
 
     private bool CanFire()
