@@ -4,7 +4,7 @@ using UnityEngine;
 public class AutoShooter : MonoBehaviour
 {
     [SerializeField] private float _attackRadius = 5f;
-    [SerializeField] private float _fireRate = 0.5f;
+    [SerializeField] private float _fireSpeed = 0.5f; 
     [SerializeField] private int _damage = 10;
     [SerializeField] private float _bulletSpeed = 10f;
     [SerializeField] private GameObject _bullet;
@@ -69,11 +69,11 @@ public class AutoShooter : MonoBehaviour
             BulletController.Instance.MoveBullet(_target, _bulletSpeed);
         }
 
-        _nextFireTime = Time.time + _fireRate;
+        _nextFireTime = Time.time + _fireSpeed;
     }
 
     private void ResetFireTimer()
     {
-        _nextFireTime = Time.time + _fireRate;
+        _nextFireTime = Time.time + _fireSpeed;
     }
 }
