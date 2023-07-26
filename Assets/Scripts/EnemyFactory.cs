@@ -18,6 +18,7 @@ public class EnemyFactory: MonoBehaviour
     {
         _enemy = _enemyList[Random.Range(0, _enemyList.Count)];
         var enemyObject = Instantiate(_enemy, spawnPosition, Quaternion.identity);
+        enemyObject.SetActive(true);
         var enemy = enemyObject.GetComponent<Enemy>();
 
         enemy.Initialize(speed, health);
