@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1421346472292867765}
   - component: {fileID: 7466006467927011790}
   - component: {fileID: 2455528150972693519}
+  - component: {fileID: 7864717023631071004}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3737397604854656241
 SpriteRenderer:
@@ -161,3 +162,16 @@ CapsuleCollider2D:
   m_Offset: {x: -0.056684513, y: 0.018895844}
   m_Size: {x: 2.2133713, y: 1.26863}
   m_Direction: 1
+--- !u!114 &7864717023631071004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287339805196137961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88323ab27bfc4031a440af4e5bcdff04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageValue: -35
