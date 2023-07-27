@@ -1,4 +1,5 @@
-﻿using Damage;
+﻿using System;
+using Damage;
 using HP;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ namespace Enemies
             if (!collision.CompareTag($"Finish")) return;
             
             MakeDamage.Instance.DealDamage(_player.GetComponent<Health>(), _finishLineDamage);
-            Destroy(gameObject);
+            Die();
         }
 
         private void Die()

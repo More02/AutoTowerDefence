@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using Enemies;
+using UnityEngine;
 
 namespace Damage
 {
     public class BulletMoveController : MonoBehaviour
     {
+        public Enemy Target { get; set; }
+
         public void MoveBullet(Transform target, float bulletSpeed)
         {
             var direction = (target.position - transform.position).normalized;

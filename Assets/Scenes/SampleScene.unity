@@ -1884,8 +1884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRadius: 5
-  _fireSpeed: 0.1
-  _damage: 10
+  _fireSpeed: 0.5
   _bulletSpeed: 10
   _bullet: {fileID: 1556916718}
 --- !u!58 &1328389433
@@ -2568,7 +2567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a07adf882f41568b52b76273c10c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainHealhBar: {fileID: 5446499451925280550}
 --- !u!4 &1760122654
 Transform:
   m_ObjectHideFlags: 0
@@ -3214,17 +3212,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ee688f72e2bc3e246876601f130edc1d, type: 3}
---- !u!114 &5446499451925280550 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2163156065943825912, guid: ee688f72e2bc3e246876601f130edc1d, type: 3}
-  m_PrefabInstance: {fileID: 5446499451925280549}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 629f9460d7ca4fc89100241bc1ac078a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5900296649449291554
 PrefabInstance:
   m_ObjectHideFlags: 0
