@@ -14,7 +14,6 @@ namespace HP
         [SerializeField] private Transform _player;
 
         private Health _health;
-        private HealthData _healthData;
         private BulletDamageController _bulletDamageController;
 
         private void Awake()
@@ -24,19 +23,18 @@ namespace HP
                 _player = transform.parent.parent;
             }
             _health = _player.GetComponent<Health>();
-            _health.onHealthChanged += OnHealthChanged;
+            _health.OnHealthChanged += OnHealthChanged;
             _healthBarFilling.color = _gradient.Evaluate(1);
             _healthCountText.color = _gradient.Evaluate(1);
         }
 
         private void OnDestroy()
         {
-            _health.onHealthChanged -= OnHealthChanged;
+            _health.OnHealthChanged -= OnHealthChanged;
         }
 
         private void OnHealthChanged(HealthData healthData)
         {
-            _healthData = healthData;
             _healthBarFilling.fillAmount = healthData.CurrentHealthAsPercange;
             _healthBarFilling.color = _gradient.Evaluate(healthData.CurrentHealthAsPercange);
 

@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace GameSessionManager
 {
-    public class GameManager: MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
         [SerializeField] private int _enemyToDestroyMin = 15;
         [SerializeField] private int _enemyToDestroyMax = 20;
@@ -14,7 +14,7 @@ namespace GameSessionManager
         [SerializeField] private Button _restartButtonWin;
         [SerializeField] private Button _restartButtonLoose;
         private int _enemyToDestroy;
-        
+
         public int CountOfDestroyedEnemy { get; set; }
         public static GameManager Instance { get; private set; }
 
@@ -32,11 +32,10 @@ namespace GameSessionManager
 
         public void CheckWin()
         {
-            if (CountOfDestroyedEnemy >= _enemyToDestroy)
-            {
-                _winCanvas.SetActive(true);
-                Time.timeScale = 0;
-            }
+            if (CountOfDestroyedEnemy < _enemyToDestroy) return;
+
+            _winCanvas.SetActive(true);
+            Time.timeScale = 0;
         }
 
         public void Loose()

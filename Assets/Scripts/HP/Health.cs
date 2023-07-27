@@ -9,7 +9,7 @@ namespace HP
         [SerializeField] private int _maxHealth = 100;
         private int _currentHealth;
 
-        public event Action<HealthData> onHealthChanged;
+        public event Action<HealthData> OnHealthChanged;
 
         private void Start()
         {
@@ -37,7 +37,7 @@ namespace HP
 
         private void Death()
         {
-            onHealthChanged?.Invoke(new HealthData(0, 0));
+            OnHealthChanged?.Invoke(new HealthData(0, 0));
             if (gameObject.CompareTag("Player"))
             {
                 GameManager.Instance.Loose();
@@ -51,7 +51,7 @@ namespace HP
         private void InvokeHealthChanged()
         {
             var currentHealthAsPercange = (float)_currentHealth / _maxHealth;
-            onHealthChanged?.Invoke(new HealthData(currentHealthAsPercange, _currentHealth));
+            OnHealthChanged?.Invoke(new HealthData(currentHealthAsPercange, _currentHealth));
         }
     }
 }

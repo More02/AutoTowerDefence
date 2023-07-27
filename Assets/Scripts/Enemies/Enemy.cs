@@ -1,6 +1,4 @@
-﻿using System;
-using Damage;
-using GameSessionManager;
+﻿using Damage;
 using HP;
 using UnityEngine;
 
@@ -9,15 +7,13 @@ namespace Enemies
     public class Enemy: MonoBehaviour
     {
         private float _speed;
-        private int _health;
 
-        private int _finishLineDamage = -1;
+        private const int FinishLineDamage = -1;
         [SerializeField] private GameObject _player;
 
-        public void Initialize(float enemySpeed, int enemyHealth)
+        public void Initialize(float enemySpeed)
         {
             _speed = enemySpeed;
-            _health = enemyHealth;
         }
 
         private void Update()
@@ -29,7 +25,7 @@ namespace Enemies
         {
             if (!collision.CompareTag($"Finish")) return;
             
-            MakeDamage.Instance.DealDamage(_player.GetComponent<Health>(), _finishLineDamage);
+            MakeDamage.DealDamage(_player.GetComponent<Health>(), FinishLineDamage);
             Die();
         }
 

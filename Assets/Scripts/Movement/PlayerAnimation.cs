@@ -7,14 +7,7 @@ namespace Movement
         [SerializeField] private Animator _animator;
         private static readonly int _toRun = Animator.StringToHash("ToRun");
         private static readonly int _toIdle = Animator.StringToHash("ToIdle");
-        private static readonly int _toAttack = Animator.StringToHash("ToAttack");
-
-        public static PlayerAnimation Instance { get; private set; }
-
-        private void Awake()
-        {
-            Instance = this;
-        }
+        //private static readonly int _toAttack = Animator.StringToHash("ToAttack");
 
         private void Update()
         {
