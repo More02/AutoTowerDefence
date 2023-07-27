@@ -62,7 +62,8 @@ public class AutoShooter : MonoBehaviour
             Instantiate(_bullet, transform.position, Quaternion.identity);
         bullet.SetActive(true);
         var bulletController = bullet?.GetComponent<BulletController>();
-
+        
+        //PlayerAnimation.Instance.SetAttackAnimation();
         if (bulletController is not null)
         {
             bulletController.MoveBullet(_target, _bulletSpeed);
