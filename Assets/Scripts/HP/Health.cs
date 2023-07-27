@@ -1,4 +1,5 @@
 ﻿using System;
+using GameSessionManager;
 using UnityEngine;
 
 namespace HP
@@ -21,6 +22,11 @@ namespace HP
             if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
+                if (gameObject.CompareTag("Enemy"))
+                {
+                    GameManager.Instance.CountOfDestroyedEnemy++;
+                    GameManager.Instance.CheckWin();
+                }
                 Death();
             }
             else
@@ -32,7 +38,14 @@ namespace HP
         private void Death()
         {
             onHealthChanged?.Invoke(new HealthData(0, 0));
-            Destroy(gameObject);
+            if (gameObject.CompareTag("Player"))
+            {
+                GameManager.Instance.Loose();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         private void InvokeHealthChanged()
