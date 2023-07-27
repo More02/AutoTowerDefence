@@ -36,7 +36,6 @@ public class Enemy: MonoBehaviour
 
     private void Die()
     {
-        // Perform death logic (e.g., play death animation, give points to player, etc.)
         Destroy(gameObject);
     }
 }

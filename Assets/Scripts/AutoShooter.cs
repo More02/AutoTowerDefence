@@ -20,16 +20,14 @@ public class AutoShooter : MonoBehaviour
 
     private void Update()
     {
-        if (_target is null && _enemies.Count > 0)
-        {
-            _target = _enemies[0];
-            _enemies.RemoveAt(0);
-            RotateTowardsEnemy();
-            if (!CanFire()) return;
-            
-            Fire();
-        }
-        ResetFireTimer();
+        if (_target is not null || _enemies.Count <= 0) return;
+        
+        _target = _enemies[0];
+        _enemies.RemoveAt(0);
+        RotateTowardsEnemy();
+        if (!CanFire()) return;
+        
+        Fire();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,14 +60,16 @@ public class AutoShooter : MonoBehaviour
     {
         var bullet =
             Instantiate(_bullet, transform.position, Quaternion.identity);
+        bullet.SetActive(true);
         var bulletController = bullet?.GetComponent<BulletController>();
 
         if (bulletController is not null)
         {
-            BulletController.Instance.MoveBullet(_target, _bulletSpeed);
+            bulletController.MoveBullet(_target, _bulletSpeed);
+            bulletController.RotateBullet(_target);
         }
 
-        _nextFireTime = Time.time + _fireSpeed;
+        ResetFireTimer();
     }
 
     private void ResetFireTimer()
