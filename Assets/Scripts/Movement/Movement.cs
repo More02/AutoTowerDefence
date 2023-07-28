@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Movement
@@ -47,8 +48,8 @@ namespace Movement
 
             transform.localScale = moveHorizontal < 0 ? new Vector3(-1f, 1f, 1f) : new Vector3(1f, 1f, 1f);
 
-            newPosition.x = Mathf.Clamp(newPosition.x, _minX + transform.localScale.x / 2,
-                _maxX - transform.localScale.x / 2);
+            newPosition.x = Mathf.Clamp(newPosition.x, _minX + Math.Abs(transform.localScale.x) / 2,
+                _maxX - Math.Abs(transform.localScale.x) / 2);
             newPosition.y = Mathf.Clamp(newPosition.y, _minY + transform.localScale.y / 2,
                 _maxY - transform.localScale.y / 2);
 
