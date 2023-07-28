@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using GameSessionManager;
+using Movement;
 using UnityEngine;
 
 namespace HP
@@ -7,7 +9,7 @@ namespace HP
     /// <summary>
     /// Базовый класс здоровья
     /// </summary>
-    public class Health: MonoBehaviour
+    public class Health : MonoBehaviour
     {
         [SerializeField] private int _maxHealth = 100;
         private int _currentHealth;
@@ -30,7 +32,8 @@ namespace HP
                     GameManager.Instance.CountOfDestroyedEnemy++;
                     GameManager.Instance.CheckWin();
                 }
-                Death();
+
+                StartCoroutine(Death());
             }
             else
             {
@@ -38,11 +41,14 @@ namespace HP
             }
         }
 
-        private void Death()
+        private IEnumerator Death()
         {
             OnHealthChanged?.Invoke(new HealthData(0, 0));
             if (gameObject.CompareTag("Player"))
             {
+                PlayerAnimation.Instance.SetDeathAnimation();
+                transform.localScale = Vector3.one;
+                yield return new WaitForSeconds(0.5f);
                 GameManager.Instance.Loose();
             }
             else

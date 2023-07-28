@@ -19,9 +19,7 @@ namespace Damage
         
         public bool IsFiring { get; private set; }
         public static AutoShooter Instance { get; private set; }
-
         
-
         private void Start()
         {
             gameObject.GetComponent<CircleCollider2D>().radius = _attackRadius;
@@ -74,9 +72,7 @@ namespace Damage
                 Instantiate(_bullet, transform.position, Quaternion.identity);
             bullet.SetActive(true);
             var bulletController = bullet.GetComponent<BulletMoveController>();
-
-            //PlayerAnimation.Instance.SetAttackAnimation();
-
+            
             bulletController.MoveBullet(_target.transform, _bulletSpeed);
             bulletController.RotateBullet(_target.transform);
 
