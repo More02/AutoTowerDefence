@@ -6,8 +6,8 @@ namespace Enemies
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private float _spawnTimeoutRangeMin = 1f;
-        [SerializeField] private float _spawnTimeoutRangeMax = 3f;
+        [SerializeField] private float _spawnTimeoutRangeMin = 0.5f;
+        [SerializeField] private float _spawnTimeoutRangeMax = 1.5f;
         [SerializeField] private float _enemySpeedRangeMin = 1f;
         [SerializeField] private float _enemySpeedRangeMax = 2f;
         [SerializeField] private List<Transform> _spawnPoints;
