@@ -5,6 +5,9 @@ using Random = UnityEngine.Random;
 
 namespace GameSessionManager
 {
+    /// <summary>
+    /// Управление игровой сессией
+    /// </summary>
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private int _enemyToDestroyMin = 15;

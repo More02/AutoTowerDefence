@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Enemies
 {
+    /// <summary>
+    /// Логика спавна врагов
+    /// </summary>
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private float _spawnTimeoutRangeMin = 0.5f;

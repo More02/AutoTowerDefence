@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Movement
 {
+    /// <summary>
+    /// Базовое перемещение
+    /// </summary>
     public class Movement : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed = 5f;

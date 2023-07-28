@@ -1,5 +1,8 @@
 ﻿namespace HP
 {
+    /// <summary>
+    /// Структура данных для хп бара
+    /// </summary>
     public struct HealthData
     {
         public readonly float CurrentHealthAsPercange;

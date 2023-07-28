@@ -1,9 +1,11 @@
-﻿using Damage;
-using HP;
+﻿using HP;
 using UnityEngine;
 
 namespace Enemies
 {
+    /// <summary>
+    /// Базовый класс для врагов
+    /// </summary>
     public class Enemy: MonoBehaviour
     {
         private float _speed;
@@ -25,7 +27,7 @@ namespace Enemies
         {
             if (!collision.CompareTag($"Finish")) return;
             
-            MakeDamage.DealDamage(_player.GetComponent<Health>(), FinishLineDamage);
+            _player.GetComponent<Health>().ChangeHealth(FinishLineDamage);
             Die();
         }
 

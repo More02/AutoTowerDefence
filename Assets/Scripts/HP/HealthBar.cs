@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 namespace HP
 {
+    /// <summary>
+    /// Класс для хп бара
+    /// </summary>
     public class HealthBar: MonoBehaviour
     {
         [SerializeField] private Image _healthBarFilling;

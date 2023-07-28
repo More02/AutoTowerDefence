@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Damage
 {
+    /// <summary>
+    /// Управление уроном снаряда
+    /// </summary>
     public class BulletDamageController : MonoBehaviour
     {
         [SerializeField] private int _damageValue = -35;
@@ -18,7 +21,7 @@ namespace Damage
         {
             if (!collision.gameObject.CompareTag("Enemy")) return;
             
-            MakeDamage.DealDamage(collision.gameObject.GetComponent<Health>(), _damageValue);
+            collision.gameObject.GetComponent<Health>().ChangeHealth(_damageValue);
             Destroy(gameObject);
         }
         

@@ -4,6 +4,9 @@ using Random = UnityEngine.Random;
 
 namespace Enemies
 {
+    /// <summary>
+    /// Фабрика создания врагов
+    /// </summary>
     public class EnemyFactory: MonoBehaviour
     {
         [SerializeField] private List<GameObject> _enemyList;

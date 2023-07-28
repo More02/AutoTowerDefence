@@ -2,6 +2,9 @@
 
 namespace Damage
 {
+    /// <summary>
+    /// Управление движением снаряда
+    /// </summary>
     public class BulletMoveController : MonoBehaviour
     {
         public void MoveBullet(Transform target, float bulletSpeed)

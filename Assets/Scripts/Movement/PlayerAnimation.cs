@@ -2,6 +2,9 @@
 
 namespace Movement
 {
+    /// <summary>
+    /// Управление анимацией
+    /// </summary>
     public class PlayerAnimation : MonoBehaviour
     {
         [SerializeField] private Animator _animator;

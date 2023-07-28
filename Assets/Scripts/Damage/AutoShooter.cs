@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Damage
 {
+    /// <summary>
+    /// Логика автоматического шутера
+    /// </summary>
     public class AutoShooter : MonoBehaviour
     {
         [SerializeField] private float _attackRadius = 5f;

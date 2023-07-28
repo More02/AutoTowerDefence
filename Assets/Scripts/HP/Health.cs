@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace HP
 {
+    /// <summary>
+    /// Базовый класс здоровья
+    /// </summary>
     public class Health: MonoBehaviour
     {
         [SerializeField] private int _maxHealth = 100;
