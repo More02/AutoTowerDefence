@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Damage
@@ -13,13 +14,18 @@ namespace Damage
         [SerializeField] private float _bulletSpeed = 10f;
         [SerializeField] private GameObject _bullet;
         private readonly List<Transform> _enemies = new();
-
         private float _nextFireTime;
         private Transform _target;
+        
+        public bool IsFiring { get; private set; }
+        public static AutoShooter Instance { get; private set; }
+
+        
 
         private void Start()
         {
             gameObject.GetComponent<CircleCollider2D>().radius = _attackRadius;
+            Instance = this;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -38,7 +44,7 @@ namespace Damage
             RotateTowardsEnemy();
                 
             if (!CanFire()) return;
-            Fire();
+            StartCoroutine(Fire());
         }
 
         private void OnTriggerExit2D(Collider2D other)
@@ -61,8 +67,9 @@ namespace Damage
             return Time.time >= _nextFireTime;
         }
 
-        private void Fire()
+        private IEnumerator Fire()
         {
+            IsFiring = true;
             var bullet =
                 Instantiate(_bullet, transform.position, Quaternion.identity);
             bullet.SetActive(true);
@@ -74,6 +81,8 @@ namespace Damage
             bulletController.RotateBullet(_target.transform);
 
             ResetFireTimer();
+            yield return new WaitForSeconds(0.1f);
+            IsFiring = false;
         }
 
         private void ResetFireTimer()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Damage;
+using UnityEngine;
 
 namespace Movement
 {
@@ -10,7 +11,7 @@ namespace Movement
         [SerializeField] private Animator _animator;
         private static readonly int _toRun = Animator.StringToHash("ToRun");
         private static readonly int _toIdle = Animator.StringToHash("ToIdle");
-        //private static readonly int _toAttack = Animator.StringToHash("ToAttack");
+        private static readonly int _toAttack = Animator.StringToHash("ToAttack");
 
         private void Update()
         {
@@ -21,22 +22,29 @@ namespace Movement
         {
             if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0))
             {
+                ResetToFalseAllBools();
                 _animator.SetBool(_toRun, true);
-                _animator.SetBool(_toIdle, false);
+                if (!AutoShooter.Instance.IsFiring) return;
+                ResetToFalseAllBools();
+                _animator.SetBool(_toAttack, true);
+            }
+            else if (AutoShooter.Instance.IsFiring)
+            {
+                ResetToFalseAllBools();
+                _animator.SetBool(_toAttack, true);
             }
             else
             {
+                ResetToFalseAllBools();
                 _animator.SetBool(_toIdle, true);
-                _animator.SetBool(_toRun, false);
             }
         }
-
-        // public void SetAttackAnimation()
-        // {
-        //     _animator.SetBool(_toAttack, true);
-        //     _animator.SetBool(_toRun, false);
-        //     _animator.SetBool(_toIdle, false);
-        //     Debug.Log("attacked");
-        // }
+        
+        private void ResetToFalseAllBools()
+        {
+            _animator.SetBool(_toIdle, false);
+            _animator.SetBool(_toRun, false);
+            _animator.SetBool(_toAttack, false);
+        }
     }
 }
