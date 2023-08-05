@@ -1,6 +1,6 @@
 # AutoTowerDefence
 
-
+Мини-игра, в которой надо защищать ворота крепости от волны врагов.
 
 [Билд](https://github.com/More02/AutoTowerDefence/releases/tag/AutoTowerDefence)
 
